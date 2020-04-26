@@ -6,6 +6,15 @@ use std::os::unix::io::AsRawFd;
 use syscall_macro::syscall;
 use syscall_num::*;
 
+pub fn exit<R>(ret_val: R) -> std::io::Result<()> 
+where
+    R: std::convert::Into<isize>,
+{
+    parse_os_error!(
+        syscall!(EXIT, ret_val.into())
+    ).map(|_| ())
+}
+
 pub fn read<F, B>(fd: F, mut buf: B, num: usize) -> std::io::Result<usize>
 where 
     F: AsRawFd,
