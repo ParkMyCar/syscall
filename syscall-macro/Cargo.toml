@@ -12,3 +12,6 @@ libc = { version = "0.2", optional = true }
 [features]
 asm = []
 default = ["libc"]
+
+[[example]]
+name = "hello_world"

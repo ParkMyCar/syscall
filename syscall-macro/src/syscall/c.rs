@@ -10,13 +10,13 @@ extern "C" {
 macro_rules! __syscall {
     ($call:expr) => {
         unsafe {
-            syscall_macro::syscall::syscall($call)
+            crate::syscall::syscall($call)
         }
     };
 
     ($call:expr, $($arg:expr),+) => {
         unsafe {
-            syscall_macro::syscall::syscall($call, $($arg),+)
+            crate::syscall::syscall($call, $($arg),+)
         }
     };
 }
