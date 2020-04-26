@@ -10,5 +10,8 @@ edition = "2018"
 syscall-macro = { version = "0.1", path = "../syscall-macro" }
 syscall-num = { version = "0.1", path = "../syscall-num" }
 
+[dev-dependencies]
+bytes = "0.5"
+
 [[examples]]
 name = "write"
