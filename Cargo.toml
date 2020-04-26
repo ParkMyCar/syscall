@@ -2,5 +2,6 @@
 
 members = [
     "syscall-macro",
+    "syscall-num",
     "syscall-rs",
 ]

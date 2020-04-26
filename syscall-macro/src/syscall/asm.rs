@@ -1,13 +1,13 @@
 #[cfg(all(target_os = "macos", target_arch = "x86_64"))]
-const OFFSET: usize = 0x2000000;
+const OFFSET: isize = 0x2000000;
 
 #[cfg(not(all(target_os = "macos", target_arch = "x86_64")))]
-const OFFSET: usize = 0;
+const OFFSET: isize = 0;
 
 #[doc(hidden)]
 #[inline(always)]
-pub unsafe fn syscall0(n: usize) -> isize {
-    let ret: isize;
+pub unsafe fn syscall0(n: isize) -> usize {
+    let ret: usize;
     llvm_asm!("syscall" : "={rax}"(ret)
                    : "{rax}"(n + OFFSET)
                    : "rcx", "r11", "memory"
@@ -17,8 +17,8 @@ pub unsafe fn syscall0(n: usize) -> isize {
 
 #[doc(hidden)]
 #[inline(always)]
-pub unsafe fn syscall1(n: usize, a1: usize) -> isize {
-    let ret: isize;
+pub unsafe fn syscall1(n: isize, a1: usize) -> usize {
+    let ret: usize;
     llvm_asm!("syscall" : "={rax}"(ret)
                    : "{rax}"(n + OFFSET), "{rdi}"(a1)
                    : "rcx", "r11", "memory"
@@ -28,8 +28,8 @@ pub unsafe fn syscall1(n: usize, a1: usize) -> isize {
 
 #[doc(hidden)]
 #[inline(always)]
-pub unsafe fn syscall2(n: usize, a1: usize, a2: usize) -> isize {
-    let ret: isize;
+pub unsafe fn syscall2(n: isize, a1: usize, a2: usize) -> usize {
+    let ret: usize;
     llvm_asm!("syscall" : "={rax}"(ret)
                    : "{rax}"(n + OFFSET), "{rdi}"(a1), "{rsi}"(a2)
                    : "rcx", "r11", "memory"
@@ -39,8 +39,8 @@ pub unsafe fn syscall2(n: usize, a1: usize, a2: usize) -> isize {
 
 #[doc(hidden)]
 #[inline(always)]
-pub unsafe fn syscall3(n: usize, a1: usize, a2: usize, a3: usize) -> isize {
-    let ret: isize;
+pub unsafe fn syscall3(n: isize, a1: usize, a2: usize, a3: usize) -> usize {
+    let ret: usize;
     llvm_asm!("syscall" : "={rax}"(ret)
                    : "{rax}"(n + OFFSET), "{rdi}"(a1), "{rsi}"(a2), "{rdx}"(a3)
                    : "rcx", "r11", "memory"
@@ -50,8 +50,8 @@ pub unsafe fn syscall3(n: usize, a1: usize, a2: usize, a3: usize) -> isize {
 
 #[doc(hidden)]
 #[inline(always)]
-pub unsafe fn syscall4(n: usize, a1: usize, a2: usize, a3: usize, a4: usize) -> isize {
-    let ret: isize;
+pub unsafe fn syscall4(n: isize, a1: usize, a2: usize, a3: usize, a4: usize) -> usize {
+    let ret: usize;
     llvm_asm!("syscall" : "={rax}"(ret)
                    : "{rax}"(n + OFFSET), "{rdi}"(a1), "{rsi}"(a2), "{rdx}"(a3),
                      "{r10}"(a4)

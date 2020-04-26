@@ -1,8 +1,5 @@
-#[cfg(feature = "default")]
-use libc;
-
 extern "C" {
-    pub fn syscall(_: libc::c_int, ...) -> libc::c_int;
+    pub fn syscall(_: isize, ...) -> usize;
 }
 
 #[doc(hidden)]
