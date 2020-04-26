@@ -20,7 +20,7 @@ macro_rules! syscall {
         }
     };
 
-    ($call:expr, $($arg:expr),*) => {
+    ($call:expr, $($arg:expr),+) => {
         unsafe {
             $crate::__syscall!($call, $($arg),+)
         }

@@ -13,9 +13,9 @@ macro_rules! __syscall {
         }
     };
 
-    ($call:expr, $($arg:expr),*) => {
+    ($call:expr, $($arg:expr),+) => {
         unsafe {
-            syscall_macro::syscall::syscall($call, $($arg),*)
+            syscall_macro::syscall::syscall($call, $($arg),+)
         }
     };
 }
