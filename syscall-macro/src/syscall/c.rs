@@ -1,3 +1,4 @@
+#[cfg(feature = "default")]
 use libc;
 
 extern "C" {
