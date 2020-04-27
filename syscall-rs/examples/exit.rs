@@ -1,4 +1,4 @@
-use syscall_rs::exit;
+use syscall_rs::process::exit;
 
 fn main() -> Result<(), std::io::Error> {
     println!("This will get printed");

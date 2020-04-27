@@ -1,7 +1,7 @@
 use std::fs::File;
 
 use bytes::BytesMut;
-use syscall_rs::read;
+use syscall_rs::io::read;
 
 fn main() -> Result<(), std::io::Error> {
     let mut buf = BytesMut::with_capacity(16);

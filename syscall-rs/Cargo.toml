@@ -12,6 +12,3 @@ syscall-num = { version = "0.1", path = "../syscall-num" }
 
 [dev-dependencies]
 bytes = "0.5"
-
-[[examples]]
-name = "write"
