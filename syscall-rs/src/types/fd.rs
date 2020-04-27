@@ -26,6 +26,12 @@ impl AsRawFd for FileDescriptor {
     }
 }
 
+impl AsRawFd for &FileDescriptor {
+    fn as_raw_fd(&self) -> RawFd {
+        (*self).fd as i32
+    }
+}
+
 impl From<isize> for FileDescriptor {
     fn from(fd: isize) -> Self {
         FileDescriptor {
